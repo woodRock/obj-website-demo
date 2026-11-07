@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sponza Orbit</title>
+  <meta name="description" content="Scroll (or swipe) to orbit the Crytek Sponza palace, compressed from a 190 MB OBJ to a 6 MB web model.">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./vendor/three/build/three.module.min.js",
+        "three/addons/": "./vendor/three/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <canvas id="scene" aria-label="3D model of the Sponza palace, rotating as you scroll"></canvas>
+
+  <div id="loader" role="status">
+    <div class="loader-label">Loading building <span id="loader-pct">0%</span></div>
+    <div class="loader-bar"><div id="loader-fill"></div></div>
+  </div>
+
+  <div class="hud">
+    <div class="compass"><span id="angle">0°</span></div>
+    <div class="hint">Scroll or swipe to orbit</div>
+  </div>
+
+  <main id="scroller">
+    <section class="panel">
+      <h1>Sponza Palace</h1>
+      <p>A full architectural model, streamed into your browser. Scroll down &mdash; or swipe on your phone &mdash; to walk the camera all the way around it.</p>
+    </section>
+    <section class="panel right">
+      <h2>From 190&nbsp;MB to 6&nbsp;MB</h2>
+      <p>The source is a 23&nbsp;MB Wavefront OBJ with 262,267 faces and 98&nbsp;MB of TGA textures. It was converted to glTF, welded, simplified, quantized, meshopt-compressed and re-encoded with WebP textures.</p>
+    </section>
+    <section class="panel">
+      <h2>Touch friendly</h2>
+      <p>Vertical swipes scroll the page and drive the orbit. Horizontal drags spin the building directly, on mouse or touch.</p>
+    </section>
+    <section class="panel right">
+      <h2>Credits</h2>
+      <p>Crytek Sponza by Frank Meinl, Crytek. Licensed <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">CC BY 3.0</a>. OBJ from <a href="https://github.com/jimmiebergmann/Sponza" target="_blank" rel="noopener">jimmiebergmann/Sponza</a>, based on Morgan McGuire's Computer Graphics Archive. Rendered with three.js.</p>
+    </section>
+  </main>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>

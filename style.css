@@ -1,0 +1,105 @@
+:root {
+  --bg: #0e0f12;
+  --ink: #f3efe7;
+  --muted: #b9b2a6;
+  --accent: #e0a96d;
+  --glass: rgba(14, 15, 18, 0.62);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+#scene {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100lvh;
+  display: block;
+  /* Let the browser handle vertical swipes (page scroll); we handle horizontal drags. */
+  touch-action: pan-y;
+}
+
+#scroller {
+  position: relative;
+  pointer-events: none; /* drags fall through to the canvas */
+}
+
+.panel {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 max(16px, 6vw);
+  max-width: 36rem;
+}
+.panel.right { margin-left: auto; }
+.panel > * {
+  pointer-events: auto;
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  margin: 0;
+  padding: 0.9rem 1.1rem;
+}
+.panel h1, .panel h2 { border-radius: 10px 10px 0 0; }
+.panel p { border-radius: 0 0 10px 10px; color: var(--muted); line-height: 1.55; }
+.panel h1 { font-size: clamp(2rem, 6vw, 3.6rem); letter-spacing: -0.02em; }
+.panel h2 { font-size: clamp(1.3rem, 3.5vw, 2rem); }
+.panel:last-child { min-height: 120vh; }
+a { color: var(--accent); }
+
+.hud {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px max(16px, 4vw) calc(16px + env(safe-area-inset-bottom));
+  pointer-events: none;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.compass span {
+  display: inline-block;
+  min-width: 4.5ch;
+  text-align: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--glass);
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.hint {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--glass);
+}
+
+#loader {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 12px;
+  background: var(--bg);
+  z-index: 10;
+  transition: opacity 0.6s ease;
+}
+#loader.done { opacity: 0; pointer-events: none; }
+.loader-label { font-size: 0.95rem; color: var(--muted); text-align: center; }
+.loader-bar { width: min(260px, 70vw); height: 4px; background: #2a2c31; border-radius: 4px; overflow: hidden; }
+#loader-fill { width: 0; height: 100%; background: var(--accent); transition: width 0.2s; }
+
+/* On portrait phones keep the text in the lower part of the screen so the building stays visible. */
+@media (max-aspect-ratio: 4/5) {
+  .panel { justify-content: flex-end; padding-bottom: 88px; }
+  .panel p { font-size: 0.95rem; }
+}
