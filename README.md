@@ -36,7 +36,13 @@ python3 -m http.server 8000
 # open http://localhost:8000
 ```
 
-It works as-is on GitHub Pages.
+## GitHub Pages
+
+`.github/workflows/pages.yml` publishes the repo root to GitHub Pages on every push to the default branch.
+It's live at **https://woodrock.github.io/obj-website-demo/**.
+
+If the first deploy fails with a "Pages site not found" error, open **Settings → Pages**, set
+**Source** to **GitHub Actions**, and re-run the workflow.
 
 ## Credits
 
