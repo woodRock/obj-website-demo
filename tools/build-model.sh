@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Rebuild models/sponza.glb from the original Crytek Sponza OBJ.
+# Rebuild docs/models/sponza.glb from the original Crytek Sponza OBJ.
 # Requires: node, python3 + Pillow. Run from the repo root: ./tools/build-model.sh
 set -euo pipefail
 
@@ -42,5 +42,5 @@ npx gltf-transform optimize sponza-raw.glb sponza.glb \
   --join true --instance false
 
 cd - >/dev/null
-cp "$WORK/sponza.glb" models/sponza.glb
-ls -lh models/sponza.glb
+cp "$WORK/sponza.glb" docs/models/sponza.glb
+ls -lh docs/models/sponza.glb

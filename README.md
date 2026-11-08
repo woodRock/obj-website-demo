@@ -27,22 +27,25 @@ The pipeline (`tools/build-model.sh`):
 - The roof fades out early in the scroll, giving a cutaway view down into the arcades.
 - Camera distance is computed from the viewport's field of view, so the whole building fits on portrait phones as well as wide desktops.
 
+## Layout
+
+- `docs/` is the whole static site (`index.html`, `main.js`, `style.css`, `models/sponza.glb`, vendored three.js).
+  GitHub Pages serves it from **main → /docs**.
+- `tools/build-model.sh` regenerates `docs/models/sponza.glb` from the original OBJ.
+
 ## Run locally
 
-It's a static site with no build step. three.js is vendored in `vendor/`.
+There's no build step.
 
 ```sh
-python3 -m http.server 8000
+python3 -m http.server 8000 -d docs
 # open http://localhost:8000
 ```
 
 ## GitHub Pages
 
-`.github/workflows/pages.yml` publishes the repo root to GitHub Pages on every push to the default branch.
-It's live at **https://woodrock.github.io/obj-website-demo/**.
-
-If the first deploy fails with a "Pages site not found" error, open **Settings → Pages**, set
-**Source** to **GitHub Actions**, and re-run the workflow.
+In **Settings → Pages**, set **Source** to **Deploy from a branch**, then pick branch **main** and folder **/docs**.
+The site will be at https://woodrock.github.io/obj-website-demo/.
 
 ## Credits
 
